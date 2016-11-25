@@ -19,6 +19,8 @@ mongoose.connect('mongodb://localhost/iot', function(err) {
   else
     console.log("DB connected!");
 });
+
+require('./models/data');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
