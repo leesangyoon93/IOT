@@ -5,8 +5,6 @@ var Data = mongoose.model('Data');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var data = new Data();
-  data.save();
   res.render('index', { title: 'IOT Server' });
 });
 
