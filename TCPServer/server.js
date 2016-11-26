@@ -24,7 +24,7 @@ var server = net.createServer(function (client) {
     client.setTimeout(500);
     client.setEncoding('utf8');
     client.on('data', function (data) {
-        var result = data.toString();
+        var result = data.toString().replace(/\n/g, "").replace(/\r/g, "");
         console.log('Received data from client on port %d: %s',
             client.remotePort, data.toString());
         console.log('  Bytes received: ' + client.bytesRead);
