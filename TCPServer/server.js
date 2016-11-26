@@ -30,7 +30,10 @@ var server = net.createServer(function (client) {
         console.log('  Bytes received: ' + client.bytesRead);
         Data.find().exec(function (err, data) {
             if (data) {
+                console.log(data);
                 var d = data[0];
+                console.log(d);
+                console.log(result);
                 if(result =="a")
                     d.pos1 = true;
                 else if(result =="b")
