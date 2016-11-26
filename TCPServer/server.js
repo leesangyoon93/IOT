@@ -31,22 +31,23 @@ var server = net.createServer(function (client) {
         Data.find().exec(function (err, data) {
             if (data) {
                 var d = data[0];
-                if(result.contains("a"))
+                if(result =="a")
                     d.pos1 = true;
-                else if(result.contains("b"))
+                else if(result =="b")
                     d.pos1 = false;
-                if(result.contains("c"))
-                    d.pos2 = true;
-                else if(result.contains("d"))
-                    d.pos2 = false;
-                if(result.contains("e"))
-                    d.pos3 = true;
-                else if(result.contains("f"))
-                    d.pos3 = false;
-                if(result.contains("g"))
-                    d.pos4 = true;
-                else if(result.contains("h"))
-                    d.pos5 = false;
+                else d.pos1 = false;
+                // if(result.contains("c"))
+                //     d.pos2 = true;
+                // else if(result.contains("d"))
+                //     d.pos2 = false;
+                // if(result.contains("e"))
+                //     d.pos3 = true;
+                // else if(result.contains("f"))
+                //     d.pos3 = false;
+                // if(result.contains("g"))
+                //     d.pos4 = true;
+                // else if(result.contains("h"))
+                //     d.pos5 = false;
                 d.save();
             }
         })
