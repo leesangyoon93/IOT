@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.leesangyoon.iot.MainActivity">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/layout_border"
+        android:id="@+id/parkingAreaInfo">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="위도"
+            android:id="@+id/textView"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="7dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_margin="2dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/latitude"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="7dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_margin="2dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="경도"
+            android:id="@+id/textView3"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="7dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_margin="2dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/longtitude"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="7dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_margin="2dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/parkingAreaInfo"
+        android:layout_margin="3dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="아주대 삼거리 공영주차장"
+                android:id="@+id/textView2"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:padding="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/remain"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:padding="5dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/distance"
+            android:layout_weight="8"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:padding="5dp" />
+    </LinearLayout>
+
+</RelativeLayout>
