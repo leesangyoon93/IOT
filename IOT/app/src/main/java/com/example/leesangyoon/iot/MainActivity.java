@@ -39,10 +39,7 @@ public class MainActivity extends AppCompatActivity {
     Boolean isGPSEnabled;
     TextView lat, lon, remain, distance;
     LinearLayout wrap;
-    ProgressDialog load;
-
-    private LocationListener locationListener = null;
-    private LocationManager locationManager = null;
+    private GpsInfo gps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
         distance = (TextView) findViewById(R.id.distance);
         wrap = (LinearLayout)findViewById(R.id.parkingAreaInfo);
 
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+//        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+//        isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
         final ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
@@ -64,27 +61,30 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
 
-        if (!isGPSEnabled) {
-            new AlertDialog.Builder(MainActivity.this)
-                    .setTitle("GPS 켜기")
-                    .setMessage("GPS를 켜시겠습니까?")
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                            startActivity(myIntent);
-                            dialogInterface.cancel();
-                        }
-                    })
-                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    })
-                    .show();
-        }
+        gps = new GpsInfo(MainActivity.this);
+        // GPS 사용유무 가져오기
+        if (gps.isGetLocation()) {
 
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
+
+            lat.setText(String.valueOf(latitude));
+            lon.setText(String.valueOf(longitude));
+
+            try {
+                getDistanceToServer();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+//            Toast.makeText(
+//                    getApplicationContext(),
+//                    "당신의 위치 - \n위도: " + latitude + "\n경도: " + longitude,
+//                    Toast.LENGTH_LONG).show();
+        } else {
+            // GPS 를 사용할수 없으므로
+            gps.showSettingsAlert();
+        }
         wrap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,67 +93,91 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        progressLoading();
+        //progressLoading();
     }
 
-    private void progressLoading() {
-        if (isGPSEnabled) {
-            load = ProgressDialog.show(this, "Loading...", "주변 세탁방 목록을 불러오는 중입니다...", false, false);
-            locationListener = new MyLocationListener();
+//        if (!isGPSEnabled) {
+//            new AlertDialog.Builder(MainActivity.this)
+//                    .setTitle("GPS 켜기")
+//                    .setMessage("GPS를 켜시겠습니까?")
+//                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+//                            startActivity(myIntent);
+//                            dialogInterface.cancel();
+//                        }
+//                    })
+//                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            dialogInterface.cancel();
+//                        }
+//                    })
+//                    .show();
+//        }
 
-            //선택된 프로바이더를 사용해 위치정보를 업데이트
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                return;
-            }
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 5, locationListener);
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 5, locationListener);
-        }
-    }
 
-    private class MyLocationListener implements LocationListener {
 
-        @Override
-        //LocationListener을 이용해서 위치정보가 업데이트 되었을때 동작 구현
-        public void onLocationChanged(Location loc) {
-
-            longtitude = String.valueOf(loc.getLongitude());
-            latitude = String.valueOf(loc.getLatitude());
-
-            lat.setText(latitude);
-            lon.setText(longtitude);
-
-            try {
-                getDistanceToServer();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-            // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-            // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-            // TODO Auto-generated method stub
-
-        }
-    }
+//    private void progressLoading() {
+//        if (isGPSEnabled) {
+//            load = ProgressDialog.show(this, "Loading...", "주변 주차장 목록을 불러오는 중입니다...", false, false);
+//            locationListener = new MyLocationListener();
+//
+//            //선택된 프로바이더를 사용해 위치정보를 업데이트
+//            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                return;
+//            }
+//            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 5, locationListener);
+//            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 5, locationListener);
+//        }
+//    }
+//
+//    private class MyLocationListener implements LocationListener {
+//
+//        @Override
+//        //LocationListener을 이용해서 위치정보가 업데이트 되었을때 동작 구현
+//        public void onLocationChanged(Location loc) {
+//            load.dismiss();
+//
+//            longtitude = String.valueOf(loc.getLongitude());
+//            latitude = String.valueOf(loc.getLatitude());
+//
+//            lat.setText(latitude);
+//            lon.setText(longtitude);
+//
+//            try {
+//                getDistanceToServer();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        @Override
+//        public void onStatusChanged(String provider, int status, Bundle extras) {
+//            // TODO Auto-generated method stub
+//
+//        }
+//
+//        @Override
+//        public void onProviderEnabled(String provider) {
+//            // TODO Auto-generated method stub
+//
+//        }
+//
+//        @Override
+//        public void onProviderDisabled(String provider) {
+//            // TODO Auto-generated method stub
+//
+//        }
+//    }
 
     private void getDistanceToServer() throws Exception {
         final ProgressDialog loading = ProgressDialog.show(this, "Loading...", "Please wait...", false, false);
 
         Map<String, String> postParam = new HashMap<String, String>();
-        postParam.put("latitude", latitude);
-        postParam.put("longtitude", longtitude);
+        postParam.put("latitude", lat.getText().toString());
+        postParam.put("longtitude", lon.getText().toString());
 
         String URL = "http://52.41.19.232/getDistance";
 
@@ -167,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "알 수 없는 에러가 발생했습니다.", Toast.LENGTH_SHORT).show();
                     } else {
 //                        Toast.makeText(MainActivity.this, "이미 가입된 세탁방입니다.", Toast.LENGTH_SHORT).show();
-                        distance.setText(response.getString("result"));
+                        distance.setText(response.getString("result") + " M");
                     }
 
 
