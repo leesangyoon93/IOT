@@ -1,6 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:id="@+id/car1"
+            android:layout_gravity="top"
+            android:src="@drawable/car"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="140dp"
+            android:layout_marginRight="20dp"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:id="@+id/car2"
+            android:src="@drawable/car"
+            android:layout_below="@+id/car1"
+            android:layout_alignLeft="@+id/car1"
+            android:layout_alignStart="@+id/car1"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:id="@+id/car3"
+            android:layout_gravity="top"
+            android:src="@drawable/car"
+
+            android:layout_below="@+id/car2"
+            android:layout_alignLeft="@+id/car2"
+            android:layout_alignStart="@+id/car2"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:id="@+id/car4"
+            android:layout_gravity="top"
+            android:src="@drawable/car"
+            android:layout_below="@+id/car3"
+            android:layout_alignLeft="@+id/car3"
+            android:layout_alignStart="@+id/car3"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:id="@+id/arrow1"
+            android:src="@drawable/arrow1"
+            android:layout_marginLeft="95dp"
+            android:layout_marginStart="95dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/car1"
+            android:layout_toEndOf="@+id/car1"
+            android:paddingBottom="50dp" />
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:id="@+id/arrow2"
+            android:src="@drawable/arrow2"
+            android:layout_marginLeft="95dp"
+            android:layout_marginStart="95dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/car1"
+            android:layout_toEndOf="@+id/car1"
+            android:paddingBottom="50dp" />
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:id="@+id/full"
+            android:src="@drawable/full"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:id="@+id/arrow3"
+            android:src="@drawable/arrow3"
+            android:layout_marginLeft="95dp"
+            android:layout_marginStart="95dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/car1"
+            android:layout_toEndOf="@+id/car1"
+            android:paddingBottom="50dp" />
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/arrow4"
+            android:src="@drawable/arrow4"
+            android:layout_marginLeft="95dp"
+            android:layout_marginStart="95dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/car1"
+            android:layout_toEndOf="@+id/car1"
+            android:paddingBottom="50dp" />
+    </RelativeLayout>
+</RelativeLayout>
