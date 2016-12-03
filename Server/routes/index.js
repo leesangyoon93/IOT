@@ -20,8 +20,7 @@ router.post('/getDistance', function (req, res) {
   var latitude1 = parseFloat(req.body.latitude);
   var longtitude1 = parseFloat(req.body.longtitude);
   var distance = calDistance(37.2811028, 127.0507571, latitude1, longtitude1);
-  console.log(distance);
-  return res.json({'result': distance});
+  return res.json({'result': parseInt(distance)});
 });
 
 function calDistance(lat1, lon1, lat2, lon2){

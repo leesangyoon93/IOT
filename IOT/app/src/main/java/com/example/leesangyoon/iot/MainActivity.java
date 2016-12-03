@@ -190,8 +190,8 @@ public class MainActivity extends AppCompatActivity {
                     if (response.getString("result").equals("fail")) {
                         Toast.makeText(MainActivity.this, "알 수 없는 에러가 발생했습니다.", Toast.LENGTH_SHORT).show();
                     } else {
-//                        Toast.makeText(MainActivity.this, "이미 가입된 세탁방입니다.", Toast.LENGTH_SHORT).show();
-                        distance.setText(response.getString("result") + " M");
+                        Toast.makeText(MainActivity.this, String.valueOf(response.getInt("result")), Toast.LENGTH_SHORT).show();
+                        distance.setText(String.valueOf(response.getInt("result")) + " M");
                     }
 
 
