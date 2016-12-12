@@ -44,13 +44,13 @@ public class DetailInfo extends AppCompatActivity {
 
         car1 = (ImageView)findViewById(R.id.car1);
         car2 = (ImageView)findViewById(R.id.car2);
-        car3 = (ImageView)findViewById(R.id.car3);
-        car4 = (ImageView)findViewById(R.id.car4);
-        arrow1 = (ImageView)findViewById(R.id.arrow1);
-        arrow2 = (ImageView)findViewById(R.id.arrow2);
-        arrow3 = (ImageView)findViewById(R.id.arrow3);
-        arrow4 = (ImageView)findViewById(R.id.arrow4);
-        full = (ImageView)findViewById(R.id.full);
+//        car3 = (ImageView)findViewById(R.id.car3);
+//        car4 = (ImageView)findViewById(R.id.car4);
+//        arrow1 = (ImageView)findViewById(R.id.arrow1);
+//        arrow2 = (ImageView)findViewById(R.id.arrow2);
+//        arrow3 = (ImageView)findViewById(R.id.arrow3);
+//        arrow4 = (ImageView)findViewById(R.id.arrow4);
+//        full = (ImageView)findViewById(R.id.full);
 
         if(task != null) {
             task.cancel();
