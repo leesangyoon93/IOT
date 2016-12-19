@@ -83,34 +83,21 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout"
         android:background="@drawable/layout_border"
-        android:id="@+id/parkingAreaInfo">
+        android:id="@+id/parkingAreaInfo"
+        android:padding="15dp">
 
-        <LinearLayout
-            android:orientation="vertical"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="아주대 삼거리 공영주차장"
-                android:id="@+id/textView2"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:padding="5dp"
-                android:textColor="#000" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/remain"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:padding="5dp"
-                android:textColor="#000" />
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:text="아주대 삼거리 공영주차장"
+            android:id="@+id/textView2"
+            android:gravity="left|center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:textColor="#000"
+            android:paddingLeft="10dp"
+            android:layout_weight="2" />
 
         <TextView
             android:layout_width="match_parent"
@@ -118,9 +105,10 @@
             android:id="@+id/distance"
             android:layout_weight="8"
             android:gravity="center"
-            android:textSize="18sp"
+            android:textSize="30sp"
             android:padding="5dp"
             android:textColor="#000" />
+
     </LinearLayout>
 
 </RelativeLayout>

@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
         lat = (TextView) findViewById(R.id.latitude);
         lon = (TextView) findViewById(R.id.longtitude);
-        remain = (TextView) findViewById(R.id.remain);
         distance = (TextView) findViewById(R.id.distance);
         wrap = (LinearLayout)findViewById(R.id.parkingAreaInfo);
 
