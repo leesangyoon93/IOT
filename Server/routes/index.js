@@ -45,19 +45,13 @@ router.post('/updateData', function (req, res) {
             if (carNum == "4") {
                 data[0].pos4 = state != 'true';
             }
-
+            data[0].save();
+            return res.json({'result': 'success'})
         }
-        if (carNum == "2") data[0].pos2 = !state;
-        if (carNum == "3") data[0].pos3 = !state;
-        if (carNum == "4") data[0].pos4 = !state;
-        data[0].save();
-        return res.json({'result': 'success'})
-    }
-    else
-    return res.json({'result': 'fail'});
+        else return res.json({'result': 'fail'});
+    })
 })
 
-})
 
 function calDistance(lat1, lon1, lat2, lon2) {
 
