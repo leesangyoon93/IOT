@@ -44,13 +44,13 @@ public class DetailInfo extends AppCompatActivity {
 
         car1 = (ImageView)findViewById(R.id.car1);
         car2 = (ImageView)findViewById(R.id.car2);
-//        car3 = (ImageView)findViewById(R.id.car3);
-//        car4 = (ImageView)findViewById(R.id.car4);
-//        arrow1 = (ImageView)findViewById(R.id.arrow1);
-//        arrow2 = (ImageView)findViewById(R.id.arrow2);
-//        arrow3 = (ImageView)findViewById(R.id.arrow3);
-//        arrow4 = (ImageView)findViewById(R.id.arrow4);
-//        full = (ImageView)findViewById(R.id.full);
+        car3 = (ImageView)findViewById(R.id.car3);
+        car4 = (ImageView)findViewById(R.id.car4);
+        arrow1 = (ImageView)findViewById(R.id.arrow1);
+        arrow2 = (ImageView)findViewById(R.id.arrow2);
+        arrow3 = (ImageView)findViewById(R.id.arrow3);
+        arrow4 = (ImageView)findViewById(R.id.arrow4);
+        full = (ImageView)findViewById(R.id.full);
 
         if(task != null) {
             task.cancel();
@@ -72,7 +72,6 @@ public class DetailInfo extends AppCompatActivity {
     }
 
     private void getDataToServer() throws Exception {
-        final ProgressDialog loading = ProgressDialog.show(this, "Loading...", "Please wait...", false, false);
 
         final String URL = "http://52.41.19.232/getData";
         Map<String, String> postParam = new HashMap<String, String>();
@@ -82,7 +81,6 @@ public class DetailInfo extends AppCompatActivity {
 
             @Override
             public void onResponse(JSONObject response) {
-                loading.dismiss();
                 try {
                     if (response.toString().contains("result")) {
                         if (response.getString("result").equals("fail")) {
@@ -92,14 +90,26 @@ public class DetailInfo extends AppCompatActivity {
                         if(response.getBoolean("pos1")) {
                             car1.setVisibility(View.VISIBLE);
                         }
+                        else {
+                            car1.setVisibility(View.GONE);
+                        }
                         if(response.getBoolean("pos2")) {
                             car2.setVisibility(View.VISIBLE);
+                        }
+                        else {
+                            car2.setVisibility(View.GONE);
                         }
                         if(response.getBoolean("pos3")) {
                             car3.setVisibility(View.VISIBLE);
                         }
+                        else {
+                            car3.setVisibility(View.GONE);
+                        }
                         if(response.getBoolean("pos4")) {
                             car4.setVisibility(View.VISIBLE);
+                        }
+                        else {
+                            car4.setVisibility(View.GONE);
                         }
 
                         if(!response.getBoolean("pos1")) {
