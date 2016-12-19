@@ -12,7 +12,6 @@ router.post('/getData', function (req, res) {
     Data.find().exec(function (err, data) {
         if (err) return res.json({'result': 'fail'});
         if (data) {
-            console.log(data);
             return res.json(data[0]);
         }
         else return res.json({'result': 'fail'});
@@ -27,9 +26,11 @@ router.post('/getDistance', function (req, res) {
 });
 
 router.post('/updateData', function (req, res) {
+    console.log(req.body)
     Data.find().exec(function (err, data) {
         if (err) return res.json({'result': 'fail'});
         if (data) {
+            console.log(data);
             carNum = req.body.carNumber;
             state = req.body.state;
             if (carNum == "1") data[0].pos1 = !state;
