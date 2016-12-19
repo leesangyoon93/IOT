@@ -155,6 +155,5 @@
             android:layout_alignStart="@+id/temp3"
             android:layout_marginTop="20dp" />
 
-
     </RelativeLayout>
 </RelativeLayout>
