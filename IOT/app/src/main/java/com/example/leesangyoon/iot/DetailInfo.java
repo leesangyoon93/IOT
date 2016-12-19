@@ -82,6 +82,7 @@ public class DetailInfo extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(DetailInfo.this, "asdf", Toast.LENGTH_SHORT).show();
                 try {
                     updateDataToServer(1, is1);
                 } catch (Exception e) {

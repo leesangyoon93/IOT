@@ -124,7 +124,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="160dp"
-            android:layout_marginRight="30dp" />
+            android:layout_marginRight="30dp"
+            android:background="#00000000" />
 
         <ImageView
             android:layout_width="200dp"
@@ -133,7 +134,8 @@
             android:layout_below="@+id/temp"
             android:layout_alignLeft="@+id/temp"
             android:layout_alignStart="@+id/temp"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:background="#00000000" />
 
         <ImageView
             android:layout_width="200dp"
@@ -143,7 +145,8 @@
             android:layout_below="@+id/temp2"
             android:layout_alignLeft="@+id/temp2"
             android:layout_alignStart="@+id/temp2"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:background="#00000000" />
 
         <ImageView
             android:layout_width="200dp"
@@ -153,7 +156,8 @@
             android:layout_below="@+id/temp3"
             android:layout_alignLeft="@+id/temp3"
             android:layout_alignStart="@+id/temp3"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:background="#00000000" />
 
     </RelativeLayout>
 </RelativeLayout>

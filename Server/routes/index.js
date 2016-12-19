@@ -36,6 +36,8 @@ router.post('/updateData', function (req, res) {
             if (carNum == "2") data[0].pos2 = !state;
             if (carNum == "3") data[0].pos3 = !state;
             if (carNum == "4") data[0].pos4 = !state;
+            data.save();
+            return res.json({'result': 'success'})
         }
         else return res.json({'result': 'fail'});
     })
