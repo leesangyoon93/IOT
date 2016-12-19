@@ -33,15 +33,29 @@ router.post('/updateData', function (req, res) {
             console.log(data);
             carNum = req.body.carNumber;
             state = req.body.state;
-            if (carNum == "1") data[0].pos1 = !state;
-            if (carNum == "2") data[0].pos2 = !state;
-            if (carNum == "3") data[0].pos3 = !state;
-            if (carNum == "4") data[0].pos4 = !state;
-            data[0].save();
-            return res.json({'result': 'success'})
+            if (carNum == "1") {
+                data[0].pos1 = state != 'true';
+            }
+            if (carNum == "2") {
+                data[0].pos2 = state != 'true';
+            }
+            if (carNum == "3") {
+                data[0].pos3 = state != 'true';
+            }
+            if (carNum == "4") {
+                data[0].pos4 = state != 'true';
+            }
+
         }
-        else return res.json({'result': 'fail'});
-    })
+        if (carNum == "2") data[0].pos2 = !state;
+        if (carNum == "3") data[0].pos3 = !state;
+        if (carNum == "4") data[0].pos4 = !state;
+        data[0].save();
+        return res.json({'result': 'success'})
+    }
+    else
+    return res.json({'result': 'fail'});
+})
 
 })
 

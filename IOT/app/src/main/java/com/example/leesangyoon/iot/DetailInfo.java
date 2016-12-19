@@ -87,7 +87,6 @@ public class DetailInfo extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                is1 = !is1;
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +97,6 @@ public class DetailInfo extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                is2 = !is2;
             }
         });
         btn3.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +107,6 @@ public class DetailInfo extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                is3 = !is3;
             }
         });
         btn4.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +117,6 @@ public class DetailInfo extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                is4 = !is4;
             }
         });
 
@@ -233,7 +229,18 @@ public class DetailInfo extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 try {
                     if (response.getString("result").equals("success")) {
-
+                        if(carNumber == 1) {
+                            is1 = !is1;
+                        }
+                        if(carNumber == 2) {
+                            is2 = !is2;
+                        }
+                        if(carNumber == 3) {
+                            is3 = !is3;
+                        }
+                        if(carNumber == 1) {
+                            is4 = !is4;
+                        }
                     } else {
 
                     }
