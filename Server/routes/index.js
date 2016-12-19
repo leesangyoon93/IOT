@@ -12,8 +12,8 @@ router.post('/getData', function(req, res) {
   Data.find().exec(function(err, data) {
     if(err) return res.json({'result': 'fail'});
     if(data) {
-      var info = {info1: data[0], info2: data[1], info3: data[2], info4: data[3]};
-      return res.json(info);
+      console.log(data);
+      return res.json(data[0]);
     }
     else return res.json({'result': 'fail'});
   })
